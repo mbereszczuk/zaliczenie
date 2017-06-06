@@ -1,0 +1,40 @@
+{% extends "proj/base.html" %}
+
+{% block body %}
+<div >
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3> Balans wszystkich wpisów: {{balance}} </h3>
+
+                                   {% if allCategories %}
+                                        <ul>
+                                            {% for Category in allCategories %}
+                                                <div class="col-sm-6 col-lg-10">
+                                                    <div class="thumbnail">
+
+                                                        <div class="caption">
+                                                            <h2>{{ Category.name }} ->  {{ Category.bal }}</h2>
+
+
+
+                                                            <!-- View Details -->
+                                                            <a href="/entries/all" class="btn btn-primary btn-sm" role="button">Zobacz Wpisy</a>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </ul>
+                                    {% else %}
+                                        <h3>Nie ma zadnych kategorii</h3>
+                                    {% endif %}
+
+                                {% endblock %}
+                </div>
+            </div>
+        </div>
+</div>

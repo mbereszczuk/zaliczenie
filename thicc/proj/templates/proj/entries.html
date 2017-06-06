@@ -1,0 +1,54 @@
+{% extends 'proj/base.html' %}
+{% block title %}Entries{% endblock %}
+
+{% block body %}
+<div class="container-fluid songs-container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" {% if filter_by == 'all' %}class="active"{% endif %}><a href="http://localhost:8000/entries/all">Wszystkie</a></li>
+                <li role="presentation" {% if filter_by == 'p' %}class="active"{% endif %}><a href="http://localhost:8000/entries/p">Przychody</a></li>
+                <li role="presentation" {% if filter_by == 'w' %}class="active"{% endif %}><a href="http://localhost:8000/entries/w">Wydatki</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Typ</th>
+                                <th>Wartość</th>
+                                <th>Data</th>
+                                <th>Opis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in entries_list %}
+                                <tr>
+                                    <td>{{ entry.type }}</td>
+                                    <td>{{ entry.value }}</td>
+                                    <td>{{ entry.date }}</td>
+                                    <td>{{ entry.description }}</td>
+
+                                </tr>
+                            {% endfor %}
+                         <a href="/create_entry/{{ category_id }}" class="btn btn-primary btn-sm" role="button">Dodaj wpis</a>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
